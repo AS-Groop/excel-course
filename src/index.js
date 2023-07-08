@@ -1,9 +1,3 @@
-import './module'
-import './style/index.scss'
-console.log('working')
+import './scss/index.scss'
 
-async function test() {
-  await Promise.resolve()
-}
-
-test()
+console.log('Working!')

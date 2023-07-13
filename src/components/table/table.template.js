@@ -5,7 +5,10 @@ const CODE = {
 
 function toCol(col) {
   return `
-    <div class="column">${col}</div>
+    <div class="column">
+      ${col}
+      <div class="col-resize"></div>
+    </div>
   `
 }
 
@@ -14,10 +17,14 @@ function toCell() {
 }
 
 
-function createRow(content, count) {
+function createRow(content, index) {
+  const resize = index ? `<div class="row-resize"></div>` : ''
   return `
     <div class="row">
-      <div class="row-info">${count || ' '}</div>
+      <div class="row-info">
+        ${index || ' '}
+        ${resize}
+      </div>
       <div class="row-data">${content}</div>
     </div>
   `

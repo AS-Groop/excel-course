@@ -5,7 +5,7 @@ const CODE = {
 
 function toCol(col) {
   return `
-    <div class="column">
+    <div class="column" data-type='resizeble'>
       ${col}
       <div class="col-resize" data-resize="col"></div>
     </div>
@@ -20,7 +20,7 @@ function toCell() {
 function createRow(content, index) {
   const resize = index ? `<div class="row-resize" data-resize="row"></div>` : ''
   return `
-    <div class="row">
+    <div class="row" data-type='resizeble'>
       <div class="row-info">
         ${index || ' '}
         ${resize}

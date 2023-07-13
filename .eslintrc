@@ -5,7 +5,9 @@
     "comma-dangle": "off",
     "arrow-parens": "off",
     "linebreak-style": "off",
-    "require-jsdoc": "off"
+    "require-jsdoc": "off",
+    "quotes": "off",
+    "operator-linebreak": "off"
   },
   "parser": "babel-eslint",
   "env": {

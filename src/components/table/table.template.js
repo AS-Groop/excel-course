@@ -3,17 +3,17 @@ const CODE = {
   Z: 90
 }
 
-function toCol(col) {
+function toCol(col, index) {
   return `
-    <div class="column" data-type='resizeble'>
+    <div class="column" data-col="${index}" data-type='resizeble'>
       ${col}
       <div class="col-resize" data-resize="col"></div>
     </div>
   `
 }
 
-function toCell() {
-  return `<div class="cell" contenteditable></div>`
+function toCell(_, col) {
+  return `<div class="cell" data-col="${col}" contenteditable></div>`
 }
 
 

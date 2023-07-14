@@ -72,13 +72,23 @@
     right: 0;
     opacity: 0;
     background: $primary-color;
-    &:hover{
+    z-index: 1;
+    &:hover, &:active{
       opacity: 1;
     }
   }
   .col-resize{
     top: 0;
     width: 4px;
+    &::after {
+      content: '';
+      top: 0;
+      left: 1px;
+      width: 2px;
+      height: 100vh;
+      position: absolute;
+      background: $primary-color;
+    }
     &:hover{
       cursor: col-resize;
     }
@@ -87,6 +97,15 @@
   .row-resize{
     left: 0;
     height: 4px;
+    &::after {
+      content: '';
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      width: 100vh;
+      position: absolute;
+      background: $primary-color;
+    }
     &:hover{
       cursor: row-resize;
     }

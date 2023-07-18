@@ -26,6 +26,7 @@
     border: 1px solid $border-color;
     background: #f8f9fa;
     border-top: none;
+    user-select: none;
   }
 
   .row-data {
@@ -80,34 +81,34 @@
   .col-resize{
     top: 0;
     width: 4px;
-    &::after {
-      content: '';
-      top: 0;
-      left: 1px;
-      width: 2px;
-      height: 100vh;
-      position: absolute;
-      background: $primary-color;
-    }
-    &:hover{
+    &:hover, &:active{
       cursor: col-resize;
+      &::after {
+        content: '';
+        top: 0;
+        left: 1px;
+        width: 2px;
+        height: 100vh;
+        position: absolute;
+        background: $primary-color;
+      }
     }
   }
 
   .row-resize{
     left: 0;
     height: 4px;
-    &::after {
-      content: '';
-      left: 0;
-      bottom: 0;
-      height: 2px;
-      width: 100vh;
-      position: absolute;
-      background: $primary-color;
-    }
-    &:hover{
+    &:hover, &:active{
       cursor: row-resize;
+      &::after {
+        content: '';
+        left: 0;
+        bottom: 0;
+        height: 2px;
+        width: 2000px;
+        position: absolute;
+        background: $primary-color;
+      }
     }
   }
 }

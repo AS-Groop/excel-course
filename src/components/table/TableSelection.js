@@ -22,9 +22,19 @@ export class TableSelection {
     this.group = []
   }
 
+  get selectionsId() {
+    return this.group.map($el=>$el.id())
+  }
+
   selectGroup(cells = []) {
     this.clear()
     this.group = cells
     this.active()
+  }
+
+  applyStyle(style) {
+    this.group.forEach($el =>{
+      $el.css(style)
+    })
   }
 }

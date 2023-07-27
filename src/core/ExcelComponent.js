@@ -1,9 +1,12 @@
-import {DomListener} from "@core/DomListener";
+import {DomListener} from "./DomListener";
 
 export class ExcelComponent extends DomListener {
   constructor($root, options = {}) {
     super($root, options.listeners);
     this.emitter = options.emitter;
+    this.subscribe = options.subscribe || [];
+    this.store = options.store
+    this.storeSub = null
     this.unsubs = []
     this.prepare();
   }
@@ -21,7 +24,17 @@ export class ExcelComponent extends DomListener {
     this.unsubs.push(unsub)
   }
 
+  $dispatch(action) {
+    this.store.dispatch(action)
+  }
+
   prepare() {}
+
+  storeChanged() {}
+
+  watchStore(key) {
+    return this.subscribe.includes(key)
+  }
 
   init() {
     this.initDOMListeners()
@@ -29,6 +42,7 @@ export class ExcelComponent extends DomListener {
 
   destroy() {
     this.removeDOMListeners()
-    this.unsubs.forEach(unsub=>unsub())
+    this.unsubs.forEach(unsub => unsub());
+    this.storeSub.unsubscribe()
   }
 }

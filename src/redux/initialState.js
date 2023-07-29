@@ -1,4 +1,4 @@
-import {storages} from "../core/utilis";
+import {clone, storages} from "../core/utilis";
 import {defaultStyles, defaultTitle} from "../default";
 
 const defaultState = {
@@ -7,6 +7,7 @@ const defaultState = {
   rowState: {},
   cellState: {},
   applyStyles: {},
+  openedDate: new Date().toJSON(),
   currentStyles: defaultStyles,
   currentText: ''
 }
@@ -17,7 +18,7 @@ const normalize = (state)=>({
   currentText: ''
 })
 
-export const initialState = storages('excel-state')
-  ? normalize(storages('excel-state'))
-  : defaultState
+export const initialState = (state) => storages(state)
+  ? normalize(storages(state))
+  : clone(defaultState)
 

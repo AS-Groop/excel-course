@@ -1,12 +1,14 @@
 import {$} from "../../core/dom";
 import {Emitter} from "../../core/Emitter";
 import {StoreSubscriber} from "../../core/StoreSubscriber";
+import {openedDate} from "../../redux/actions";
 
 export class Excel {
   constructor(selector, options) {
     this.$el = $(selector);
     this.components = options.components || [];
     this.store = options.store
+    this.storegeName = options.storageName
     this.subscriber = new StoreSubscriber(this.store)
     this.emitter = new Emitter()
   }
@@ -15,7 +17,8 @@ export class Excel {
     const $root = $.create('div', 'excel')
     const componentOption = {
       emitter: this.emitter,
-      store: this.store
+      store: this.store,
+      storageName: this.storegeName
     }
 
     this.components = this.components.map(Component=>{
@@ -30,12 +33,12 @@ export class Excel {
     return $root
   }
 
-  render() {
-    this.$el.append(this.getRoot().$el);
+  init() {
     this.subscriber.subscriberStore(this.components)
     this.components.forEach(component=>{
       component.init()
     })
+    this.store.dispatch(openedDate(new Date().toJSON()))
   }
 
   destroy() {

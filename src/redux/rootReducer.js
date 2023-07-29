@@ -1,7 +1,7 @@
 import {
   APPLY_STYLES,
   CHANGE_TEXT,
-  CURRENT_STYLES,
+  CURRENT_STYLES, OPENED_DATE,
   TABLE_RESIZE,
   TABLE_TITLE
 } from "./types";
@@ -34,6 +34,8 @@ export function rootReducer(state, action) {
         currentStyles: {...state.currentStyles, ...action.data.value}}
     case TABLE_TITLE:
       return {...state, title: action.data}
+    case OPENED_DATE:
+      return {...state, openedDate: action.data}
     default:
       return state
   }

@@ -24,6 +24,10 @@ export function storages(key, data=null) {
   }
 }
 
+export function removeStorage(key) {
+  localStorage.removeItem(key)
+}
+
 export function isEqual(a, b) {
   if (typeof a === 'object' && typeof b==='object') {
     return JSON.stringify(a) === JSON.stringify(b)
@@ -66,4 +70,8 @@ export function parse(value) {
     }
   }
   return value
+}
+
+export function clone(obj) {
+  return JSON.parse(JSON.stringify(obj))
 }

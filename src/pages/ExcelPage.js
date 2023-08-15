@@ -1,5 +1,5 @@
 import {Page} from "../Page";
-import {createStore} from "../core/createStore";
+import {createStore} from "../core/store/createStore";
 import {rootReducer} from "../redux/rootReducer";
 import {debounce, storages} from "../core/utilis";
 import {Excel} from "../components/excel/Excel";
